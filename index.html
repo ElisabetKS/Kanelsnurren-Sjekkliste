@@ -24,7 +24,8 @@ header { background: #22362C; padding: 0 2rem; display: flex; align-items: cente
 .header-right select { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: #fff; border-radius: 6px; padding: 5px 10px; font-size: 13px; cursor: pointer; }
 .header-right select option { background: var(--green); }
 
-.upload-strip { background: #2D4542; padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; }
+.upload-strip { background: #2D4542; padding: .65rem 2rem; display: none; align-items: center; gap: 1rem; }
+.upload-strip.visible { display: flex; }
 .upload-strip p { color: rgba(255,255,255,.8); font-size: 13px; }
 .upload-btn { display: inline-flex; align-items: center; gap: 7px; background: #fff; color: var(--green); border: none; border-radius: 6px; padding: 7px 16px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
 .upload-btn:hover { background: var(--green-light); }
@@ -121,7 +122,7 @@ tr:hover td { background: #faf8f4; }
   </div>
 </header>
 
-<div class="upload-strip" id="upload-strip" style="display: flex;">
+<div class="upload-strip" id="upload-strip">
   <p>Last opp én utfylt sjekkliste om gangen</p>
   <button class="upload-btn" onclick="document.getElementById('file-input').click()">↑ Last opp sjekkliste</button>
   <input type="file" id="file-input" accept=".xlsx" onchange="handleFile(event)">
@@ -1939,20 +1940,19 @@ function renderAvvik() {
 // ── EKSPORTER MED DATA INNBAKT ────────────────────────────────────────────
 function exportDashboard() {
   if (!entries.length) { alert("Ingen data å eksportere ennå."); return; }
-  // Les inn denne HTML-filen og erstatt entries-array med gjeldende data
-  const html = document.documentElement.outerHTML;
-  const marker = 'let entries = [];';
-  const replacement = `let entries = ${JSON.stringify(entries)};`;
-  const exported = html.replace(
+  let exported = document.documentElement.outerHTML;
+  // Bak inn data
+  exported = exported.replace(
     /let entries = (\[\]|\[[\s\S]*?\]);(\s*try \{ entries = JSON\.parse.*?\} catch\(e\) \{ entries = \[\]; \})?/,
-    replacement
+    `let entries = ${JSON.stringify(entries)};`
   );
+  // Alltid skjul admin-elementer i eksportert fil uansett nåværende tilstand
+  exported = exported.replace(/class="upload-strip"/g, 'class="upload-strip"');
+  exported = exported.replace(/class="upload-strip"/g, 'class="upload-strip"');
   const blob = new Blob([exported], { type: "text/html;charset=utf-8;" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
-  a.href = url;
-  a.download = "index.html";
-  a.click();
+  a.href = url; a.download = "index.html"; a.click();
   URL.revokeObjectURL(url);
   showToast("Fil lastet ned — last opp index.html til GitHub");
 }
@@ -1962,7 +1962,7 @@ if (isAdmin) {
   const us = document.getElementById('upload-strip');
   const eb = document.getElementById('export-btn');
   const eg = document.getElementById('export-github-btn');
-  if (us) us.style.display = 'flex';
+  if (us) us.classList.add('visible');
   if (eb) eb.style.display = 'inline-flex';
   if (eg) eg.style.display = 'inline-flex';
 }
