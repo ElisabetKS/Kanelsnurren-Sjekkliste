@@ -118,11 +118,11 @@ tr:hover td { background: #faf8f4; }
   </div>
   <div style="width:200px;display:flex;justify-content:flex-end;align-items:center;gap:8px;">
     <label style="color:#a8c4a2;font-size:12px;">Måned</label>
-    <select id="month-select" onchange="renderAll()" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;position:relative;z-index:200;"><option value="2026" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Hele 2026</option><option value="2026-07" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Juli 2026</option><option value="2026-06" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Juni 2026</option><option value="2026-05" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Mai 2026</option><option value="2026-04" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">April 2026</option><option value="2026-03" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Mars 2026</option><option value="2026-02" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Februar 2026</option></select>
+    <select id="month-select" onchange="renderAll()" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;position:relative;z-index:200;"><option value="2026" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Hele 2026</option><option value="2026-07" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Juli 2026</option><option value="2026-06" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Juni 2026</option><option value="2026-05" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Mai 2026</option><option value="2026-04" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">April 2026</option><option value="2026-03" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Mars 2026</option><option value="2026-02" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Februar 2026</option><option value="2026">Hele 2026</option><option value="2026-08" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">August 2026</option><option value="2026-07" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Juli 2026</option><option value="2026-06" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Juni 2026</option><option value="2026-05" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Mai 2026</option><option value="2026-04" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">April 2026</option><option value="2026-03" style="color: rgb(26, 26, 26); background: rgb(255, 255, 255);">Mars 2026</option></select>
   </div>
 </header>
 
-<div class="upload-strip" id="upload-strip">
+<div class="upload-strip visible" id="upload-strip">
   <p>Last opp én utfylt sjekkliste om gangen</p>
   <button class="upload-btn" onclick="document.getElementById('file-input').click()">↑ Last opp sjekkliste</button>
   <input type="file" id="file-input" accept=".xlsx" onchange="handleFile(event)">
@@ -130,10 +130,10 @@ tr:hover td { background: #faf8f4; }
 </div>
 
 <div class="preview-wrap" id="preview-wrap">
-  <div class="score-ring" id="preview-ring"></div>
+  <div class="score-ring ring-green" id="preview-ring">99%</div>
   <div class="preview-info">
-    <h3 id="preview-name"></h3>
-    <p id="preview-meta"></p>
+    <h3 id="preview-name">Liertoppen</h3>
+    <p id="preview-meta">99.1% · 1 avvik · Uke 33 · Milja</p>
   </div>
   <div class="preview-actions">
     <button class="btn-discard" onclick="discardPreview()">Forkast</button>
@@ -142,14 +142,14 @@ tr:hover td { background: #faf8f4; }
 </div>
 
 <main>
-  <div class="stats" id="stats"><div class="stat"><p class="stat-label">Innleverte</p><p class="stat-val sv-tot">37</p></div>
-     <div class="stat"><p class="stat-label">Grønt</p><p class="stat-val sv-g">35</p></div>
-     <div class="stat"><p class="stat-label">Gult</p><p class="stat-val sv-y">2</p></div>
+  <div class="stats" id="stats"><div class="stat"><p class="stat-label">Innleverte</p><p class="stat-val sv-tot">1</p></div>
+     <div class="stat"><p class="stat-label">Grønt</p><p class="stat-val sv-g">1</p></div>
+     <div class="stat"><p class="stat-label">Gult</p><p class="stat-val sv-y">0</p></div>
      <div class="stat"><p class="stat-label">Rødt</p><p class="stat-val sv-r">0</p></div></div>
   <div class="tabs">
     <div class="tab active" onclick="switchTab('oversikt')">Oversikt</div>
-    <div class="tab" onclick="switchTab('mangler')">Mangler <span class="tab-badge" id="mangler-badge" style="display: inline-flex;">1</span></div>
-    <div class="tab" onclick="switchTab('avvik')">Avvik <span class="tab-badge" id="avvik-badge" style="display: inline-flex;">173</span></div>
+    <div class="tab" onclick="switchTab('mangler')">Mangler <span class="tab-badge" id="mangler-badge" style="display: inline-flex;">24</span></div>
+    <div class="tab" onclick="switchTab('avvik')">Avvik <span class="tab-badge" id="avvik-badge" style="display: inline-flex;">1</span></div>
   </div>
 
   <div class="tab-panel active" id="panel-oversikt">
@@ -175,347 +175,115 @@ tr:hover td { background: #faf8f4; }
         <th style="width:4%"></th>
       </tr></thead>
       <tbody id="oversikt-body"><tr><td colspan="8" style="background:#EAF3DE;font-size:11px;font-weight:700;color:#2e5a09;text-transform:uppercase;letter-spacing:.06em;padding:7px 14px;">Oslo</td></tr><tr>
-      <td style="font-weight:600">Bekkestua</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">86.3%</td>
-      <td style="color:#8a1f1f;font-weight:700">8 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Frode, Milja, Ida</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Bekkestua','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Bekkestua</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">94.9%</td>
-      <td style="color:#8a1f1f;font-weight:700">4 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 26 · Jun</td>
-      <td style="color:#777;font-size:13px">Milja</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Bekkestua','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Holmenkollen</td>
-      <td><span class="badge by"><span class="bdot"></span>Gult</span></td>
-      <td style="font-weight:700;color:#7a4e00">77.8%</td>
-      <td style="color:#8a1f1f;font-weight:700">14 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Holmenkollen','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Holmenkollen</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">93.5%</td>
-      <td style="color:#8a1f1f;font-weight:700">5 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 26 · Jun</td>
-      <td style="color:#777;font-size:13px">Milja</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Holmenkollen','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Jar</td>
-      <td><span class="badge by"><span class="bdot"></span>Gult</span></td>
-      <td style="font-weight:700;color:#7a4e00">76.9%</td>
-      <td style="color:#8a1f1f;font-weight:700">16 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Jar','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Jar</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">97.7%</td>
-      <td style="color:#8a1f1f;font-weight:700">3 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 26 · Jun</td>
-      <td style="color:#777;font-size:13px">Milja</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Jar','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Jessheim</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">92.5%</td>
-      <td style="color:#8a1f1f;font-weight:700">4 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Milja</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Jessheim','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
       <td style="font-weight:600">Liertoppen</td>
       <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">88.8%</td>
-      <td style="color:#8a1f1f;font-weight:700">4 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Liertoppen','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Skøyen</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">95.4%</td>
-      <td style="color:#8a1f1f;font-weight:700">4 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Skøyen','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Valkyrien</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
       <td style="font-weight:700;color:#2e5a09">99.1%</td>
       <td style="color:#8a1f1f;font-weight:700">1 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Valkyrien','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Valkyrien</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">96.3%</td>
-      <td style="color:#8a1f1f;font-weight:700">2 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 26 · Jun</td>
+      <td style="color:#777;font-size:13px">Uke 33 · Aug</td>
       <td style="color:#777;font-size:13px">Milja</td>
       <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Valkyrien','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Østbanehallen</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">88.9%</td>
-      <td style="color:#8a1f1f;font-weight:700">8 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Østbanehallen','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Østbanehallen</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">96.3%</td>
-      <td style="color:#8a1f1f;font-weight:700">2 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 26 · Jun</td>
-      <td style="color:#777;font-size:13px">Milja</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Østbanehallen','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr><td colspan="8" style="background:#EAF3DE;font-size:11px;font-weight:700;color:#2e5a09;text-transform:uppercase;letter-spacing:.06em;padding:7px 14px;">Rogaland</td></tr><tr>
-      <td style="font-weight:600">Arneageren</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">82.3%</td>
-      <td style="color:#8a1f1f;font-weight:700">11 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 21 · Mai</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Arneageren','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Bryne</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">98.1%</td>
-      <td style="color:#8a1f1f;font-weight:700">2 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 26 · Jun</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Bryne','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Drive Thru</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">93.7%</td>
-      <td style="color:#8a1f1f;font-weight:700">5 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 24 · Jun</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Drive Thru','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Egersund</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">96.9%</td>
-      <td style="color:#8a1f1f;font-weight:700">4 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Egersund','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Eiganes</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">93.9%</td>
-      <td style="color:#8a1f1f;font-weight:700">3 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 25 · Jun</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Eiganes','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Eiganes</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">100.0%</td>
-      <td style="color:#777;font-weight:400">—</td>
-      <td style="color:#777;font-size:13px">Uke 22 · Mai</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Eiganes','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Herbarium</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">92.5%</td>
-      <td style="color:#8a1f1f;font-weight:700">4 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 21 · Mai</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Herbarium','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Herbarium</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">100.0%</td>
-      <td style="color:#777;font-weight:400">—</td>
-      <td style="color:#777;font-size:13px">Uke 27 · Jun</td>
-      <td style="color:#777;font-size:13px">Henrik Polden</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Herbarium','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Hinna</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">89.4%</td>
-      <td style="color:#8a1f1f;font-weight:700">7 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 25 · Jun</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Hinna','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Hinna</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">92.5%</td>
-      <td style="color:#8a1f1f;font-weight:700">2 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 21 · Mai</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Hinna','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Jærhagen</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">96.3%</td>
-      <td style="color:#8a1f1f;font-weight:700">2 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 24 · Jun</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Jærhagen','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Kilden</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">99.1%</td>
-      <td style="color:#8a1f1f;font-weight:700">1 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 20 · Mai</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Kilden','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Kilden</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">93.5%</td>
-      <td style="color:#8a1f1f;font-weight:700">3 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 25 · Jun</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Kilden','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Kvadrat Nord</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">86.0%</td>
-      <td style="color:#8a1f1f;font-weight:700">5 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 24 · Jun</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Kvadrat Nord','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Kvadrat Sør</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">97.2%</td>
-      <td style="color:#8a1f1f;font-weight:700">3 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 19 · Mai</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Kvadrat Sør','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Madla</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">94.4%</td>
-      <td style="color:#8a1f1f;font-weight:700">6 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 17 · Apr</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Madla','2026-04')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Madla</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">85.0%</td>
-      <td style="color:#8a1f1f;font-weight:700">10 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 26 · Jun</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Madla','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Maxi</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">89.4%</td>
-      <td style="color:#8a1f1f;font-weight:700">5 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 24 · Jun</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Maxi','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Sandnes Langgata</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">90.7%</td>
-      <td style="color:#8a1f1f;font-weight:700">6 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 23 · Jun</td>
-      <td style="color:#777;font-size:13px">Fride</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Sandnes Langgata','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Tasta</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">97.1%</td>
-      <td style="color:#8a1f1f;font-weight:700">3 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 25 · Jun</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Tasta','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Tasta</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">91.6%</td>
-      <td style="color:#8a1f1f;font-weight:700">5 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 19 · Mai</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Tasta','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Øst</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">99.2%</td>
-      <td style="color:#8a1f1f;font-weight:700">1 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 25 · Jun</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Uanmeldt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Øst','2026-06')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr>
-      <td style="font-weight:600">Øst</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">98.4%</td>
-      <td style="color:#8a1f1f;font-weight:700">2 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 21 · Mai</td>
-      <td style="color:#777;font-size:13px">Henrik</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Øst','2026-05')" title="Fjern" style="display:inline-block">✕</button></td>
-    </tr><tr><td colspan="8" style="background:#f0ede6;font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.06em;padding:7px 14px;">Annet</td></tr><tr>
-      <td style="font-weight:600">Bryne M44</td>
-      <td><span class="badge bg"><span class="bdot"></span>Grønt</span></td>
-      <td style="font-weight:700;color:#2e5a09">85.0%</td>
-      <td style="color:#8a1f1f;font-weight:700">8 avvik</td>
-      <td style="color:#777;font-size:13px">Uke 17 · Apr</td>
-      <td style="color:#777;font-size:13px">Frode</td>
-      <td style="font-size:12px;color:#999">Planlagt</td>
-      <td><button class="del-btn" onclick="deleteEntry('Bryne M44','2026-04')" title="Fjern" style="display:inline-block">✕</button></td>
+      <td><button class="del-btn" onclick="deleteEntry('Liertoppen','2026-08')" title="Fjern" style="display:inline-block">✕</button></td>
     </tr></tbody>
     </table></div>
   </div>
 
   <div class="tab-panel" id="panel-mangler">
-    <div id="mangler-content"><p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Følgende utsalg mangler sjekkliste i 2026.</p><p style="font-size:11px;font-weight:700;color:#2e5a09;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:1rem">Oslo</p><div class="mangler-grid">
+    <div id="mangler-content"><p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Følgende utsalg mangler sjekkliste denne måneden.</p><p style="font-size:11px;font-weight:700;color:#2e5a09;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:1rem">Oslo</p><div class="mangler-grid">
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Jar</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Skøyen</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Valkyrien</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Østbanehallen</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Bekkestua</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Holmenkollen</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
       <div class="mangler-card">
         <span style="font-size:20px;opacity:.4">🏪</span>
         <div><p class="mangler-name">Gjelleråsen</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Jessheim</p><p class="mangler-sub">Ikke levert</p></div>
+      </div></div><p style="font-size:11px;font-weight:700;color:#2e5a09;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:1rem">Rogaland</p><div class="mangler-grid">
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Madla</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Bryne</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Drive Thru</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Eiganes</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Herbarium</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Hinna</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Jærhagen</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Kvadrat Nord</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Kvadrat Sør</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Maxi</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Sandnes Langgata</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Arneageren</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Øst</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Tasta</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Kilden</p><p class="mangler-sub">Ikke levert</p></div>
+      </div>
+      <div class="mangler-card">
+        <span style="font-size:20px;opacity:.4">🏪</span>
+        <div><p class="mangler-name">Egersund</p><p class="mangler-sub">Ikke levert</p></div>
       </div></div></div>
   </div>
 
@@ -532,1049 +300,17 @@ tr:hover td { background: #faf8f4; }
         <th style="width:12%">Uke</th>
       </tr></thead>
       <tbody id="avvik-body"><tr>
-    <td style="font-weight:600">Tasta</td>
-    <td><span class="avvik-id">I8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bordlamper/telys er tent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Tasta</td>
-    <td><span class="avvik-id">ADM1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Kasseoppgjør.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Tasta</td>
-    <td><span class="avvik-id">ADM3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bestillingsrutinene følges slik at varebeholdningen til enhver tid er tilstrekkelig.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Hinna</td>
-    <td><span class="avvik-id">I4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Stolene/benkene tørket over og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Hinna</td>
-    <td><span class="avvik-id">I7</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Blomstene/potteplantene på gulvet er velstelt.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Hinna</td>
-    <td><span class="avvik-id">I15</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Barnestoler er rene og tørket av, og plassert på riktig plass.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Hinna</td>
-    <td><span class="avvik-id">I16</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene er rene på innsiden.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Hinna</td>
-    <td><span class="avvik-id">DD5</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Drikkevarer står fint fremstilt i displaykjøleren.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Hinna</td>
-    <td><span class="avvik-id">DD8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er riktig sortement i delivarer.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Hinna</td>
-    <td><span class="avvik-id">RV3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">De ansatte vet hvor de finner HMS opplæringen og opplæring er gitt alle ansatte.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Eiganes</td>
-    <td><span class="avvik-id">I1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Eiganes</td>
-    <td><span class="avvik-id">I2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er ikke støv i utsalget.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Eiganes</td>
-    <td><span class="avvik-id">T8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Søppelbøtten er representabel.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Øst</td>
-    <td><span class="avvik-id">D8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er satt opp varer på glassdisk etter standard.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Maxi</td>
-    <td><span class="avvik-id">I2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er ikke støv i utsalget.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Det er en del støv på skilt/romdelere som skiller gang og sittegrupper</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Maxi</td>
-    <td><span class="avvik-id">I15</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Barnestoler er rene og tørket av, og plassert på riktig plass.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Maxi</td>
-    <td><span class="avvik-id">R2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Kniver er rene (både de som er i bruk og de som er i skuffer).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Bør vaskes etter bruk om det er tid</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Maxi</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Manglet for lørdag 6.juni</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Maxi</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Filter må støvsuges på kjøleskap</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Drive Thru</td>
-    <td><span class="avvik-id">U3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene ute er rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Fuglebæsj på vindu, bør vaskes</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Drive Thru</td>
-    <td><span class="avvik-id">U4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Uteblomsterne er velstelt.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Bør oppgradere blomster og pusse benker</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Drive Thru</td>
-    <td><span class="avvik-id">I4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Stolene/benkene tørket over og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Drive Thru</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Må fikse noen pærer/spotter</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Drive Thru</td>
-    <td><span class="avvik-id">R6</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Sprayflasker/såper er plassert på riktig sted.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Jærhagen</td>
-    <td><span class="avvik-id">I16</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene er rene på innsiden.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Ganske store og tydelige kladdemerker på vindu rekkverk ved sitteplassene</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Jærhagen</td>
-    <td><span class="avvik-id">R6</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Sprayflasker/såper er plassert på riktig sted.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Finne en fast plass til slik at gjesten ikke ser de</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Kvadrat Nord</td>
-    <td><span class="avvik-id">I1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Minne på å koste gulvet etter bygging av disk</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Kvadrat Nord</td>
-    <td><span class="avvik-id">D1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Disken bugner / det er godt varetrykk (også utpå dagen).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mer muffins i disk</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Kvadrat Nord</td>
-    <td><span class="avvik-id">D5</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Glasset i disken er ren (både utside og innside).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Glassdisken bør vaskes som en del av åpningsrutinen på grunn av støv fra senteret</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Kvadrat Nord</td>
-    <td><span class="avvik-id">R6</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Sprayflasker/såper er plassert på riktig sted.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Finne et sted å oppbevare sprayflasker i skap/under disk som ikke er synlig for gjester</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Kvadrat Nord</td>
-    <td><span class="avvik-id">B1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bakrommet er ryddig og rent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Bakrommet er rotete på grunn av mangle på hyller/oppbevaring</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 24</td>
-  </tr><tr>
-    <td style="font-weight:600">Sandnes Langgata</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Sjekker spotten om den virker</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 23</td>
-  </tr><tr>
-    <td style="font-weight:600">Sandnes Langgata</td>
-    <td><span class="avvik-id">D5</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Glasset i disken er ren (både utside og innside).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Disken bør vaskes oftere foran kasse og kaffeutlevering</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 23</td>
-  </tr><tr>
-    <td style="font-weight:600">Sandnes Langgata</td>
-    <td><span class="avvik-id">R2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Kniver er rene (både de som er i bruk og de som er i skuffer).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vask av kniv, har vært rush og mye gjester</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 23</td>
-  </tr><tr>
-    <td style="font-weight:600">Sandnes Langgata</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Manglet to datoer i mai</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 23</td>
-  </tr><tr>
-    <td style="font-weight:600">Sandnes Langgata</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Ikke støvsugd</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 23</td>
-  </tr><tr>
-    <td style="font-weight:600">Sandnes Langgata</td>
-    <td><span class="avvik-id">KK9</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Musikken er på behagelig nivå og riktig spilleliste spilles av.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Har ikke virket skikkelig noen gang</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 23</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">U3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene ute er rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vinduene fremstår som rene ved inngangspartiet. Men noe smuss over uteservering. Trafikkfilm og pollen er en utfordring</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">I4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Stolene/benkene tørket over og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mulig feil bruk av kjemikale på bordvask</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">I8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bordlamper/telys er tent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Ikke tent</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler en pære</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">I15</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Barnestoler er rene og tørket av, og plassert på riktig plass.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Følge opp stengevakten på rutine, vurder å ha dette som et eget punkt og ikke sammen med alle bord og stoler</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">I16</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene er rene på innsiden.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Noen fettmerker og berøringsflekker</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">R1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er rent oppi skuffene og skap.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Stort sett bra, men mangler bunnplate på skap under toastjern</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">DD4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Display-frys er ren og fylt opp.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Feil prisskilt</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">DD8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er riktig sortement i delivarer.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Bestille mer</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">B1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bakrommet er ryddig og rent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Det bør jobbes med å holde gulv og hjørner fri fro rot. Spesielt der det er synlig for gjesten</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">RV2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Rutinelistene blir ført på med tusj på laminert ark og visket bort hver uke/måned</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Noe mangler på temperaturer de siste dagene</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Det mangler nøkler for å komme til filter i kjøleskap/fryseskap. Dette må ordnes slik at de kan vedlikeholdes og øke levetiden på kjøleskap</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">KK1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Uniformen er brukt riktig (skjorte + forstykke, mørke bukser) tette sko.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler forstykke og dette bør strammes opp. Det er vanskelig å ha forstykke og jobbe med ovn og det er ubehagelige forstykker.</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">I2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er ikke støv i utsalget.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Noe støv på dispensere og punkter som ikke er benk eller overflater. Bak tv/kaffemeny</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">I4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Stolene/benkene tørket over og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Rene bord, men en del benker og stoler med smuler/smuss</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">D4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Prisskilt er plassert riktig (ved produktet).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Noe feil på prisskilt</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">DD2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Presentasjon av delivarer er delikat og ryddig.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Tom delivarehylle pga tyveri, vurdere å ta bort/blende</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">B1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bakrommet er ryddig og rent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mulig hyllesystem? Mye som står på gulv</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">B3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Personaltoalett (der aktuelt) og garderobe er ryddig og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Toalettsete er løst og mangler muttere</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler noen registreringer på helligdager når butikkleder har fri</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler en del knotter og den ene døren er låst. Må få låst den opp</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Valkyrien</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Har ikke fått opplæring i vedlikehold. Fryseskapet er låst og bør låses opp slik at en får tilgang</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Skøyen</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler en pære over vannstasjonen</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Skøyen</td>
-    <td><span class="avvik-id">I15</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Barnestoler er rene og tørket av, og plassert på riktig plass.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Skitne barnestoler satt på plass</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Skøyen</td>
-    <td><span class="avvik-id">I16</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene er rene på innsiden.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vindu-gelender i trapp har mange kladdemerker</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Skøyen</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Filter over oppvaskaskin var ikke rengjort</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Egersund</td>
-    <td><span class="avvik-id">U5</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bordene er ryddet og tørket av.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vaskes av hver morgen</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Egersund</td>
-    <td><span class="avvik-id">RV2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler ukesrutiner tilbake i tid. Ikke gjennomgått i opplæring?</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Egersund</td>
-    <td><span class="avvik-id">KK3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er behagelig temperatur i utsalget og de ansatte opplært i ventilasjonsanlegget.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Varmt i utsalget, skru av ovner. Kontakt huseier - temperaturstyring</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Egersund</td>
-    <td><span class="avvik-id">ADM1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Kasseoppgjør.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Differanse i kassen som vi ikke vet hvor stammer fra</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">U1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er rent og fritt for søppel utenfor (snus/sneiper tatt bort).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">En del sneiper/snus på uteservering</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">U2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Utemøbler står pent oppstilt.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Litt rotete og synlig søppel som kunne vært plukket</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">U3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene ute er rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Sjekke rutiner for vindusvask</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">I2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er ikke støv i utsalget.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">En del støv i vinduskarmer</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">I8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bordlamper/telys er tent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">De fleste av lysene var slukket</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler en pære</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">T2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Døren er ren og i orden.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Dør kan med fordel vaskes på innsiden</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">D4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Prisskilt er plassert riktig (ved produktet).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Nytt prisskilt</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">DD1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Delivarehyllen og delivarer er tørket av for støv.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mye støv rundt og under delivarer</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">DD8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er riktig sortement i delivarer.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler surdeigsknekkebrød</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">B1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bakrommet er ryddig og rent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Rom for forbedring. Litt rotete og esker direkte på gulvet</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">RV1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Datomerking er gjort ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Utløpsdato ok. Bør merkes med åpnet dato også</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">RV2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Ingen ukesrutiner utfylt i uke 22, uke 21 ok</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler på de 3 siste</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Filter på fryseskap må rengjøres</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">KK12</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Markedsføringsmateriell er oppdatert og satt opp i henhold til standard.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Prisskilt er ulik standard</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Bytte lyspære</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">I16</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene er rene på innsiden.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vaske utgangsdør og skillevegg ved utgangen</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">K7</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Kaffemaskinen er rengjort i henhold til rutiner - inkl. steamerarm og filter.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Steamerarm har tørket melk</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">DD5</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Drikkevarer står fint fremstilt i displaykjøleren.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler prisskilt kjøl</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">DD8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er riktig sortement i delivarer.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler surdeigsknekkebrød</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">RV2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Ingen ukesrutiner er påbegynt i uke 22</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler kontroll to dager i mai ifølge skjema</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Støvsuge filter på isbitmaskinen</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
     <td style="font-weight:600">Liertoppen</td>
-    <td><span class="avvik-id">I3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bordene er ryddet, tørket av og rene, og de ryddes fortløpende.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Skiltene på bordene er veldig skitne</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Liertoppen</td>
-    <td><span class="avvik-id">D4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Prisskilt er plassert riktig (ved produktet).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Prisskilt er ikke i henhold til standard</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Liertoppen</td>
-    <td><span class="avvik-id">R6</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Sprayflasker/såper er plassert på riktig sted.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Finne en plass å oppbevare disse</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Liertoppen</td>
-    <td><span class="avvik-id">RV1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Datomerking er gjort ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Det bør være åpningsdato og best før dato på ost og skinke. Pluss øvreige varer som åpnes</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jessheim</td>
-    <td><span class="avvik-id">R1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er rent oppi skuffene og skap.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vask og rydd skuffer</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jessheim</td>
-    <td><span class="avvik-id">B2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Kjøl/frys er ryddig og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Trenger mer plass til melk. Ønsker seg et lite kjøleskap til melk. Har ikke plass til noe ekstra hvis bestillinger</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jessheim</td>
-    <td><span class="avvik-id">RV1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Datomerking er gjort ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Trenger datomerkingmaskin eller klistremerker med datomerking</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Jessheim</td>
-    <td><span class="avvik-id">RV2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Må få rutine på å fylle ut. Mangler fullstendig utfylling på flere skjemaer.</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 22</td>
-  </tr><tr>
-    <td style="font-weight:600">Øst</td>
-    <td><span class="avvik-id">I2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er ikke støv i utsalget.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Tørke støv over luftkanaler.</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Øst</td>
-    <td><span class="avvik-id">T9</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Stellebord er pent og rent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vaskes og tørkes støv av</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Herbarium</td>
-    <td><span class="avvik-id">I7</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Blomstene/potteplantene på gulvet er velstelt.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Enormt mye støv på blomstene på gulv</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Herbarium</td>
-    <td><span class="avvik-id">I16</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene er rene på innsiden.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Se over glassvegg mot Mester Grønn</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Herbarium</td>
-    <td><span class="avvik-id">R1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er rent oppi skuffene og skap.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Nøyere kosting i hyllene</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Herbarium</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler flere dager i mars/april, noe bedre i mai. Ofte de større stillingene som tar temperaturen.</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">A3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">De ansatte på jobb har fått tilstrekkelig opplæring.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">U1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er rent og fritt for søppel utenfor (snus/sneiper tatt bort).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Rutine på åpning sjekk av uteplass</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">I1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">T3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Gulv/vegger/tak/annet utstyr er rent og i orden.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Maling på toalettet</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">R1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er rent oppi skuffene og skap.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vegger på skap/hyller har falt ut. Må settes opp igjen</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">DD1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Delivarehyllen og delivarer er tørket av for støv.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Støv på delihylle</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">RV2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Finner ikke rutinelister tilbake i tid</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">RV7</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Behov for vedlikehold er meldt til regionleder.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Maling på toalett, fikse vegg bak hyller under disk</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Filter isbitmaskin, kjølebenker bak disk</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Arneageren</td>
-    <td><span class="avvik-id">ADM3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bestillingsrutinene følges slik at varebeholdningen til enhver tid er tilstrekkelig.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Lite melk over lenger tid, store feil bestillinger på soyamelk</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Hinna</td>
-    <td><span class="avvik-id">I15</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Barnestoler er rene og tørket av, og plassert på riktig plass.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vask og oppfølging av stengevakten</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Hinna</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler 3 dager i april.</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 21</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">I2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er ikke støv i utsalget.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Støv på lamper, disk</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">I8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bordlamper/telys er tent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">I13</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Romdeler er rene og tørket for støv.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler 4 oppe, meldt fra på forhånd</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">D8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er satt opp varer på glassdisk etter standard.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Støvsuge filter til kjøledisker. På hylle på bakrom. Veldig utilgjengelig</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Tasta</td>
-    <td><span class="avvik-id">D7</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er satt ut smaksprøve i henhold til standard.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Fjerne klistrelapper</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 19</td>
-  </tr><tr>
-    <td style="font-weight:600">Tasta</td>
-    <td><span class="avvik-id">B1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bakrommet er ryddig og rent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Holde bakdisk ryddig</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 19</td>
-  </tr><tr>
-    <td style="font-weight:600">Tasta</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler 5 dager i april. Høye tempereturer i kjøledisk som ikke er meldt fra</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 19</td>
-  </tr><tr>
-    <td style="font-weight:600">Tasta</td>
-    <td><span class="avvik-id">RV7</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Behov for vedlikehold er meldt til regionleder.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Høy temperatur i kjøledisk, sjekk filter</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 19</td>
-  </tr><tr>
-    <td style="font-weight:600">Tasta</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Sjekk filter, dårlig tilgjengelighet</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 19</td>
-  </tr><tr>
-    <td style="font-weight:600">Kvadrat Sør</td>
-    <td><span class="avvik-id">I2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er ikke støv i utsalget.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Litt støv rundt omkring. Utilgjengelige plasser. Mangler støvkost og stige</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 19</td>
-  </tr><tr>
-    <td style="font-weight:600">Kvadrat Sør</td>
-    <td><span class="avvik-id">I10</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Søppeldunkene fremstår pene og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Lokket op gjestesøppelet er skittent</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 19</td>
-  </tr><tr>
-    <td style="font-weight:600">Kvadrat Sør</td>
-    <td><span class="avvik-id">RV7</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Behov for vedlikehold er meldt til regionleder.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">sendt på mail til vaktmester</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 19</td>
-  </tr><tr>
-    <td style="font-weight:600">Kilden</td>
-    <td><span class="avvik-id">DD4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Display-frys er ren og fylt opp.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Må fylles opp med noe. Lite salg av makroner, kutte ut?</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 20</td>
-  </tr><tr>
-    <td style="font-weight:600">Kilden</td>
-    <td><span class="avvik-id">I1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Kilden</td>
-    <td><span class="avvik-id">R1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er rent oppi skuffene og skap.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Vaske under kjøledisker</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Kilden</td>
-    <td><span class="avvik-id">B2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Kjøl/frys er ryddig og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Overfylt på øverste hylle slik at det ødelegger for kjøing</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 25</td>
-  </tr><tr>
-    <td style="font-weight:600">Valkyrien</td>
-    <td><span class="avvik-id">DD8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er riktig sortement i delivarer.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler poser med cookies og pumpkinsnack, og Nordre Nes 0,75L. Kun 1 Himmelstund, fyll på.</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Valkyrien</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Har ikke støvsuger</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler lys i taklampe midt i rommet</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler nøkkel til å åpne filter på skap</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Jar</td>
-    <td><span class="avvik-id">KK3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er behagelig temperatur i utsalget og de ansatte opplært i ventilasjonsanlegget.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">AC ute av drift. Vurdere vifte i kafe. Kjent avvik fra tidligere</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">D4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Prisskilt er plassert riktig (ved produktet).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Feil skilt på cola zero</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">DD4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Display-frys er ren og fylt opp.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Bør tørkes av og fylles opp</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">DD8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er riktig sortement i delivarer.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler pumpkinsnack og pose med cookies. Bestilt men ikke fått levert. Forventet levering tirsdag</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Bekkestua</td>
-    <td><span class="avvik-id">RV2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Ikke startet på denne ukens ukesrutiner</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne</td>
-    <td><span class="avvik-id">I13</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Romdeler er rene og tørket for støv.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">En del støv som var samlet opp på disse, også over menyskilt</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne</td>
-    <td><span class="avvik-id">I16</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Vinduene er rene på innsiden.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Noen flekker og fingermerker på dør og berøringspunkter</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">I15</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Barnestoler er rene og tørket av, og plassert på riktig plass.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">To barnestoler, begge trengs en vask</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Østbanehallen</td>
-    <td><span class="avvik-id">D5</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Glasset i disken er ren (både utside og innside).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Synlig støvete disk på både kiosk og cafe</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">I1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Rutiner med kosting/feiing, mye smuler på gulv, hyller, benk, stoler og bord</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">I3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bordene er ryddet, tørket av og rene, og de ryddes fortløpende.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">I4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Stolene/benkene tørket over og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">I10</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Søppeldunkene fremstår pene og rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mye støv og gammelt søl</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Lys  i cafe var ikke skrudd på. 1 lampe uten lys</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">D5</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Glasset i disken er ren (både utside og innside).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Gammel moro på innsiden og oppå</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">D6</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Benkplaten bak disken er ren og ryddig.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Smulete og skittent på bakdisk</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">R1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er rent oppi skuffene og skap.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mye gamle smuler i hyller langs hele disken</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">R2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Kniver er rene (både de som er i bruk og de som er i skuffer).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Madla</td>
-    <td><span class="avvik-id">DD2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Presentasjon av delivarer er delikat og ryddig.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Tomt i delihylle</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">I8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Bordlamper/telys er tent.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Telys ikke tent, rydde vekk for sommeren?</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">I14</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er lys i alle taklamper.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Lyspære virker ikke på taklampe ytterst ved vinduet. Og mangler i en av lampene i taket nærmest kaffemaskinen</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">DD8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er riktig sortement i delivarer.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler poser med cookies og pumpkinsnack. Er bestilt inn til neste uke</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">RV2</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Ikke begynt med rutinelister. Har plan om å begynne med dette 1.juli</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Holmenkollen</td>
-    <td><span class="avvik-id">ADM1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Kasseoppgjør.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler dagsoppgjør skjema. Ikke fylt ut kontantskjema for nattsafe</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 26</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne M44</td>
-    <td><span class="avvik-id">I1</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne M44</td>
-    <td><span class="avvik-id">I11</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Det er pent og ryddig ved vannstasjonen.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mye flekker og ikke vasket</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne M44</td>
-    <td><span class="avvik-id">D3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Produkter som ikke har god nok kvalitet er fjernet fra disk.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Kardemommesnurr som var overstekt</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne M44</td>
-    <td><span class="avvik-id">R3</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Skjærefjøler er rene.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">—</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne M44</td>
-    <td><span class="avvik-id">DD6</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">«Halvmuren» foran kaffestasjonen er ryddet og tom.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Skitten benk, men ryddig og pen</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne M44</td>
-    <td><span class="avvik-id">RV4</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Temperatur på kjøl er tatt daglig ihht rutiner.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler noen datoer i april</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne M44</td>
-    <td><span class="avvik-id">RV7</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Behov for vedlikehold er meldt til regionleder.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">En list må limes og benkeplaten må byttes ved vasken</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
-  </tr><tr>
-    <td style="font-weight:600">Bryne M44</td>
-    <td><span class="avvik-id">RV8</span></td>
-    <td style="white-space:normal;font-size:13px;line-height:1.4">Filter på kjøledisk og ventilasjon er støvsugd.</td>
-    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Mangler knotter til å feste filter på fryseskap. Gå ikke ann å åpne luken på kjøkkenskap for å gjøre vedlikehold</td>
-    <td style="font-size:12px;color:var(--muted)">Uke 17</td>
+    <td><span class="avvik-id">RV9</span></td>
+    <td style="white-space:normal;font-size:13px;line-height:1.4">Førstehjelpsskriner er tilgjengelig og med riktig innhold.</td>
+    <td style="white-space:normal;font-size:13px;color:var(--muted);line-height:1.4">Hadde tidligere, sjekker opp om det har blitt lagt på lager.</td>
+    <td style="font-size:12px;color:var(--muted)">Uke 33</td>
   </tr></tbody>
     </table></div>
   </div>
 </main>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast">Lagt til: Liertoppen</div>
 
 <script>
 const REGIONER = {
@@ -1589,7 +325,7 @@ function getRegion(utsalg) {
   return "Annet";
 }
 
-let entries = [{"utsalg":"Tasta","dato":"19.06.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":97.11538461538461,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I8","sp":"Bordlamper/telys er tent.","kom":""},{"id":"ADM1","sp":"Kasseoppgjør.","kom":""},{"id":"ADM3","sp":"Bestillingsrutinene følges slik at varebeholdningen til enhver tid er tilstrekkelig.","kom":""}],"month":"2026-06"},{"utsalg":"Hinna","dato":"19.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":89.42307692307693,"status":"Grønt","avvikCount":7,"avvik":[{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":""},{"id":"I7","sp":"Blomstene/potteplantene på gulvet er velstelt.","kom":""},{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":""},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":""},{"id":"DD5","sp":"Drikkevarer står fint fremstilt i displaykjøleren.","kom":""},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":""},{"id":"RV3","sp":"De ansatte vet hvor de finner HMS opplæringen og opplæring er gitt alle ansatte.","kom":""}],"month":"2026-06"},{"utsalg":"Eiganes","dato":"18.06.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":93.85964912280701,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":""},{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":""},{"id":"T8","sp":"Søppelbøtten er representabel.","kom":""}],"month":"2026-06"},{"utsalg":"Øst","dato":"17.06.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":99.21875,"status":"Grønt","avvikCount":1,"avvik":[{"id":"D8","sp":"Det er satt opp varer på glassdisk etter standard.","kom":""}],"month":"2026-06"},{"utsalg":"Maxi","dato":"11.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":89.42307692307693,"status":"Grønt","avvikCount":5,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Det er en del støv på skilt/romdelere som skiller gang og sittegrupper"},{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":""},{"id":"R2","sp":"Kniver er rene (både de som er i bruk og de som er i skuffer).","kom":"Bør vaskes etter bruk om det er tid"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Manglet for lørdag 6.juni"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Filter må støvsuges på kjøleskap"}],"month":"2026-06"},{"utsalg":"Drive Thru","dato":"12.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":93.69369369369369,"status":"Grønt","avvikCount":5,"avvik":[{"id":"U3","sp":"Vinduene ute er rene.","kom":"Fuglebæsj på vindu, bør vaskes"},{"id":"U4","sp":"Uteblomsterne er velstelt.","kom":"Bør oppgradere blomster og pusse benker"},{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":""},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Må fikse noen pærer/spotter"},{"id":"R6","sp":"Sprayflasker/såper er plassert på riktig sted.","kom":""}],"month":"2026-06"},{"utsalg":"Jærhagen","dato":"12.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":96.26168224299066,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Ganske store og tydelige kladdemerker på vindu rekkverk ved sitteplassene"},{"id":"R6","sp":"Sprayflasker/såper er plassert på riktig sted.","kom":"Finne en fast plass til slik at gjesten ikke ser de"}],"month":"2026-06"},{"utsalg":"Kvadrat Nord","dato":"12.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":85.98130841121495,"status":"Grønt","avvikCount":5,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":"Minne på å koste gulvet etter bygging av disk"},{"id":"D1","sp":"Disken bugner / det er godt varetrykk (også utpå dagen).","kom":"Mer muffins i disk"},{"id":"D5","sp":"Glasset i disken er ren (både utside og innside).","kom":"Glassdisken bør vaskes som en del av åpningsrutinen på grunn av støv fra senteret"},{"id":"R6","sp":"Sprayflasker/såper er plassert på riktig sted.","kom":"Finne et sted å oppbevare sprayflasker i skap/under disk som ikke er synlig for gjester"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Bakrommet er rotete på grunn av mangle på hyller/oppbevaring"}],"month":"2026-06"},{"utsalg":"Sandnes Langgata","dato":"04.06.2026","gjennomforer":"Fride","planlagt":"Uanmeldt","score":90.65420560747664,"status":"Grønt","avvikCount":6,"avvik":[{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Sjekker spotten om den virker"},{"id":"D5","sp":"Glasset i disken er ren (både utside og innside).","kom":"Disken bør vaskes oftere foran kasse og kaffeutlevering"},{"id":"R2","sp":"Kniver er rene (både de som er i bruk og de som er i skuffer).","kom":"Vask av kniv, har vært rush og mye gjester"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Manglet to datoer i mai"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Ikke støvsugd"},{"id":"KK9","sp":"Musikken er på behagelig nivå og riktig spilleliste spilles av.","kom":"Har ikke virket skikkelig noen gang"}],"month":"2026-06"},{"utsalg":"Holmenkollen","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":77.77777777777779,"status":"Gult","avvikCount":14,"avvik":[{"id":"U3","sp":"Vinduene ute er rene.","kom":"Vinduene fremstår som rene ved inngangspartiet. Men noe smuss over uteservering. Trafikkfilm og pollen er en utfordring"},{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":"Mulig feil bruk av kjemikale på bordvask"},{"id":"I8","sp":"Bordlamper/telys er tent.","kom":"Ikke tent"},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler en pære"},{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":"Følge opp stengevakten på rutine, vurder å ha dette som et eget punkt og ikke sammen med alle bord og stoler"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Noen fettmerker og berøringsflekker"},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Stort sett bra, men mangler bunnplate på skap under toastjern"},{"id":"DD4","sp":"Display-frys er ren og fylt opp.","kom":"Feil prisskilt"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Bestille mer"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Det bør jobbes med å holde gulv og hjørner fri fro rot. Spesielt der det er synlig for gjesten"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Rutinelistene blir ført på med tusj på laminert ark og visket bort hver uke/måned"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Noe mangler på temperaturer de siste dagene"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Det mangler nøkler for å komme til filter i kjøleskap/fryseskap. Dette må ordnes slik at de kan vedlikeholdes og øke levetiden på kjøleskap"},{"id":"KK1","sp":"Uniformen er brukt riktig (skjorte + forstykke, mørke bukser) tette sko.","kom":"Mangler forstykke og dette bør strammes opp. Det er vanskelig å ha forstykke og jobbe med ovn og det er ubehagelige forstykker."}],"month":"2026-05"},{"utsalg":"Eiganes","dato":"28.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":100,"status":"Grønt","avvikCount":0,"avvik":[],"month":"2026-05"},{"utsalg":"Østbanehallen","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":88.88888888888889,"status":"Grønt","avvikCount":8,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Noe støv på dispensere og punkter som ikke er benk eller overflater. Bak tv/kaffemeny"},{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":"Rene bord, men en del benker og stoler med smuler/smuss"},{"id":"D4","sp":"Prisskilt er plassert riktig (ved produktet).","kom":"Noe feil på prisskilt"},{"id":"DD2","sp":"Presentasjon av delivarer er delikat og ryddig.","kom":"Tom delivarehylle pga tyveri, vurdere å ta bort/blende"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Mulig hyllesystem? Mye som står på gulv"},{"id":"B3","sp":"Personaltoalett (der aktuelt) og garderobe er ryddig og rene.","kom":"Toalettsete er løst og mangler muttere"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler noen registreringer på helligdager når butikkleder har fri"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Mangler en del knotter og den ene døren er låst. Må få låst den opp"}],"month":"2026-05"},{"utsalg":"Valkyrien","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":99.06542056074767,"status":"Grønt","avvikCount":1,"avvik":[{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Har ikke fått opplæring i vedlikehold. Fryseskapet er låst og bør låses opp slik at en får tilgang"}],"month":"2026-05"},{"utsalg":"Skøyen","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":95.38461538461539,"status":"Grønt","avvikCount":4,"avvik":[{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler en pære over vannstasjonen"},{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":"Skitne barnestoler satt på plass"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Vindu-gelender i trapp har mange kladdemerker"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Filter over oppvaskaskin var ikke rengjort"}],"month":"2026-05"},{"utsalg":"Egersund","dato":"28.05.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":96.92307692307692,"status":"Grønt","avvikCount":4,"avvik":[{"id":"U5","sp":"Bordene er ryddet og tørket av.","kom":"Vaskes av hver morgen"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Mangler ukesrutiner tilbake i tid. Ikke gjennomgått i opplæring?"},{"id":"KK3","sp":"Det er behagelig temperatur i utsalget og de ansatte opplært i ventilasjonsanlegget.","kom":"Varmt i utsalget, skru av ovner. Kontakt huseier - temperaturstyring"},{"id":"ADM1","sp":"Kasseoppgjør.","kom":"Differanse i kassen som vi ikke vet hvor stammer fra"}],"month":"2026-05"},{"utsalg":"Jar","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":76.92307692307693,"status":"Gult","avvikCount":16,"avvik":[{"id":"U1","sp":"Det er rent og fritt for søppel utenfor (snus/sneiper tatt bort).","kom":"En del sneiper/snus på uteservering"},{"id":"U2","sp":"Utemøbler står pent oppstilt.","kom":"Litt rotete og synlig søppel som kunne vært plukket"},{"id":"U3","sp":"Vinduene ute er rene.","kom":"Sjekke rutiner for vindusvask"},{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"En del støv i vinduskarmer"},{"id":"I8","sp":"Bordlamper/telys er tent.","kom":"De fleste av lysene var slukket"},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler en pære"},{"id":"T2","sp":"Døren er ren og i orden.","kom":"Dør kan med fordel vaskes på innsiden"},{"id":"D4","sp":"Prisskilt er plassert riktig (ved produktet).","kom":"Nytt prisskilt"},{"id":"DD1","sp":"Delivarehyllen og delivarer er tørket av for støv.","kom":"Mye støv rundt og under delivarer"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler surdeigsknekkebrød"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Rom for forbedring. Litt rotete og esker direkte på gulvet"},{"id":"RV1","sp":"Datomerking er gjort ihht rutiner.","kom":"Utløpsdato ok. Bør merkes med åpnet dato også"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Ingen ukesrutiner utfylt i uke 22, uke 21 ok"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler på de 3 siste"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Filter på fryseskap må rengjøres"},{"id":"KK12","sp":"Markedsføringsmateriell er oppdatert og satt opp i henhold til standard.","kom":"Prisskilt er ulik standard"}],"month":"2026-05"},{"utsalg":"Bekkestua","dato":"28.05.2026","gjennomforer":"Frode, Milja, Ida","planlagt":"Planlagt","score":86.32478632478633,"status":"Grønt","avvikCount":8,"avvik":[{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Bytte lyspære"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Vaske utgangsdør og skillevegg ved utgangen"},{"id":"K7","sp":"Kaffemaskinen er rengjort i henhold til rutiner - inkl. steamerarm og filter.","kom":"Steamerarm har tørket melk"},{"id":"DD5","sp":"Drikkevarer står fint fremstilt i displaykjøleren.","kom":"Mangler prisskilt kjøl"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler surdeigsknekkebrød"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Ingen ukesrutiner er påbegynt i uke 22"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler kontroll to dager i mai ifølge skjema"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Støvsuge filter på isbitmaskinen"}],"month":"2026-05"},{"utsalg":"Liertoppen","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":88.78504672897196,"status":"Grønt","avvikCount":4,"avvik":[{"id":"I3","sp":"Bordene er ryddet, tørket av og rene, og de ryddes fortløpende.","kom":"Skiltene på bordene er veldig skitne"},{"id":"D4","sp":"Prisskilt er plassert riktig (ved produktet).","kom":"Prisskilt er ikke i henhold til standard"},{"id":"R6","sp":"Sprayflasker/såper er plassert på riktig sted.","kom":"Finne en plass å oppbevare disse"},{"id":"RV1","sp":"Datomerking er gjort ihht rutiner.","kom":"Det bør være åpningsdato og best før dato på ost og skinke. Pluss øvreige varer som åpnes"}],"month":"2026-05"},{"utsalg":"Jessheim","dato":"29.05.2026","gjennomforer":"Milja","planlagt":"Planlagt","score":92.5233644859813,"status":"Grønt","avvikCount":4,"avvik":[{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Vask og rydd skuffer"},{"id":"B2","sp":"Kjøl/frys er ryddig og rene.","kom":"Trenger mer plass til melk. Ønsker seg et lite kjøleskap til melk. Har ikke plass til noe ekstra hvis bestillinger"},{"id":"RV1","sp":"Datomerking er gjort ihht rutiner.","kom":"Trenger datomerkingmaskin eller klistremerker med datomerking"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Må få rutine på å fylle ut. Mangler fullstendig utfylling på flere skjemaer."}],"month":"2026-05"},{"utsalg":"Øst","dato":"20.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":98.44961240310077,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Tørke støv over luftkanaler."},{"id":"T9","sp":"Stellebord er pent og rent.","kom":"Vaskes og tørkes støv av"}],"month":"2026-05"},{"utsalg":"Herbarium","dato":"20.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":92.5233644859813,"status":"Grønt","avvikCount":4,"avvik":[{"id":"I7","sp":"Blomstene/potteplantene på gulvet er velstelt.","kom":"Enormt mye støv på blomstene på gulv"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Se over glassvegg mot Mester Grønn"},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Nøyere kosting i hyllene"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler flere dager i mars/april, noe bedre i mai. Ofte de større stillingene som tar temperaturen."}],"month":"2026-05"},{"utsalg":"Arneageren","dato":"20.05.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":82.3076923076923,"status":"Grønt","avvikCount":11,"avvik":[{"id":"A3","sp":"De ansatte på jobb har fått tilstrekkelig opplæring.","kom":""},{"id":"U1","sp":"Det er rent og fritt for søppel utenfor (snus/sneiper tatt bort).","kom":"Rutine på åpning sjekk av uteplass"},{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":""},{"id":"T3","sp":"Gulv/vegger/tak/annet utstyr er rent og i orden.","kom":"Maling på toalettet"},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Vegger på skap/hyller har falt ut. Må settes opp igjen"},{"id":"DD1","sp":"Delivarehyllen og delivarer er tørket av for støv.","kom":"Støv på delihylle"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Finner ikke rutinelister tilbake i tid"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":""},{"id":"RV7","sp":"Behov for vedlikehold er meldt til regionleder.","kom":"Maling på toalett, fikse vegg bak hyller under disk"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Filter isbitmaskin, kjølebenker bak disk"},{"id":"ADM3","sp":"Bestillingsrutinene følges slik at varebeholdningen til enhver tid er tilstrekkelig.","kom":"Lite melk over lenger tid, store feil bestillinger på soyamelk"}],"month":"2026-05"},{"utsalg":"Hinna","dato":"20.05.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":92.5233644859813,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":"Vask og oppfølging av stengevakten"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler 3 dager i april."}],"month":"2026-05"},{"utsalg":"Madla","dato":"20.04.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":94.39252336448598,"status":"Grønt","avvikCount":6,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Støv på lamper, disk"},{"id":"I8","sp":"Bordlamper/telys er tent.","kom":""},{"id":"I13","sp":"Romdeler er rene og tørket for støv.","kom":""},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler 4 oppe, meldt fra på forhånd"},{"id":"D8","sp":"Det er satt opp varer på glassdisk etter standard.","kom":""},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Støvsuge filter til kjøledisker. På hylle på bakrom. Veldig utilgjengelig"}],"month":"2026-04"},{"utsalg":"Tasta","dato":"06.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":91.58878504672897,"status":"Grønt","avvikCount":5,"avvik":[{"id":"D7","sp":"Det er satt ut smaksprøve i henhold til standard.","kom":"Fjerne klistrelapper"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Holde bakdisk ryddig"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler 5 dager i april. Høye tempereturer i kjøledisk som ikke er meldt fra"},{"id":"RV7","sp":"Behov for vedlikehold er meldt til regionleder.","kom":"Høy temperatur i kjøledisk, sjekk filter"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Sjekk filter, dårlig tilgjengelighet"}],"month":"2026-05"},{"utsalg":"Kvadrat Sør","dato":"06.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":97.19626168224299,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Litt støv rundt omkring. Utilgjengelige plasser. Mangler støvkost og stige"},{"id":"I10","sp":"Søppeldunkene fremstår pene og rene.","kom":"Lokket op gjestesøppelet er skittent"},{"id":"RV7","sp":"Behov for vedlikehold er meldt til regionleder.","kom":"sendt på mail til vaktmester"}],"month":"2026-05"},{"utsalg":"Kilden","dato":"12.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":99.07407407407408,"status":"Grønt","avvikCount":1,"avvik":[{"id":"DD4","sp":"Display-frys er ren og fylt opp.","kom":"Må fylles opp med noe. Lite salg av makroner, kutte ut?"}],"month":"2026-05"},{"utsalg":"Kilden","dato":"15.06.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":93.51851851851852,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":""},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Vaske under kjøledisker"},{"id":"B2","sp":"Kjøl/frys er ryddig og rene.","kom":"Overfylt på øverste hylle slik at det ødelegger for kjøing"}],"month":"2026-06"},{"utsalg":"Valkyrien","dato":"23.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":96.26168224299066,"status":"Grønt","avvikCount":2,"avvik":[{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler poser med cookies og pumpkinsnack, og Nordre Nes 0,75L. Kun 1 Himmelstund, fyll på."},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Har ikke støvsuger"}],"month":"2026-06"},{"utsalg":"Jar","dato":"23.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":97.6923076923077,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler lys i taklampe midt i rommet"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Mangler nøkkel til å åpne filter på skap"},{"id":"KK3","sp":"Det er behagelig temperatur i utsalget og de ansatte opplært i ventilasjonsanlegget.","kom":"AC ute av drift. Vurdere vifte i kafe. Kjent avvik fra tidligere"}],"month":"2026-06"},{"utsalg":"Bekkestua","dato":"23.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":94.87179487179486,"status":"Grønt","avvikCount":4,"avvik":[{"id":"D4","sp":"Prisskilt er plassert riktig (ved produktet).","kom":"Feil skilt på cola zero"},{"id":"DD4","sp":"Display-frys er ren og fylt opp.","kom":"Bør tørkes av og fylles opp"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler pumpkinsnack og pose med cookies. Bestilt men ikke fått levert. Forventet levering tirsdag"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Ikke startet på denne ukens ukesrutiner"}],"month":"2026-06"},{"utsalg":"Bryne","dato":"24.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":98.13084112149532,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I13","sp":"Romdeler er rene og tørket for støv.","kom":"En del støv som var samlet opp på disse, også over menyskilt"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Noen flekker og fingermerker på dør og berøringspunkter"}],"month":"2026-06"},{"utsalg":"Østbanehallen","dato":"25.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":96.26168224299066,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":"To barnestoler, begge trengs en vask"},{"id":"D5","sp":"Glasset i disken er ren (både utside og innside).","kom":"Synlig støvete disk på både kiosk og cafe"}],"month":"2026-06"},{"utsalg":"Madla","dato":"25.06.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":85.04672897196261,"status":"Grønt","avvikCount":10,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":"Rutiner med kosting/feiing, mye smuler på gulv, hyller, benk, stoler og bord"},{"id":"I3","sp":"Bordene er ryddet, tørket av og rene, og de ryddes fortløpende.","kom":""},{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":""},{"id":"I10","sp":"Søppeldunkene fremstår pene og rene.","kom":"Mye støv og gammelt søl"},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Lys  i cafe var ikke skrudd på. 1 lampe uten lys"},{"id":"D5","sp":"Glasset i disken er ren (både utside og innside).","kom":"Gammel moro på innsiden og oppå"},{"id":"D6","sp":"Benkplaten bak disken er ren og ryddig.","kom":"Smulete og skittent på bakdisk"},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Mye gamle smuler i hyller langs hele disken"},{"id":"R2","sp":"Kniver er rene (både de som er i bruk og de som er i skuffer).","kom":""},{"id":"DD2","sp":"Presentasjon av delivarer er delikat og ryddig.","kom":"Tomt i delihylle"}],"month":"2026-06"},{"utsalg":"Holmenkollen","dato":"26.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":93.45794392523365,"status":"Grønt","avvikCount":5,"avvik":[{"id":"I8","sp":"Bordlamper/telys er tent.","kom":"Telys ikke tent, rydde vekk for sommeren?"},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Lyspære virker ikke på taklampe ytterst ved vinduet. Og mangler i en av lampene i taket nærmest kaffemaskinen"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler poser med cookies og pumpkinsnack. Er bestilt inn til neste uke"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Ikke begynt med rutinelister. Har plan om å begynne med dette 1.juli"},{"id":"ADM1","sp":"Kasseoppgjør.","kom":"Mangler dagsoppgjør skjema. Ikke fylt ut kontantskjema for nattsafe"}],"month":"2026-06"},{"utsalg":"Bryne M44","dato":"20.04.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":85.04672897196261,"status":"Grønt","avvikCount":8,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":""},{"id":"I11","sp":"Det er pent og ryddig ved vannstasjonen.","kom":"Mye flekker og ikke vasket"},{"id":"D3","sp":"Produkter som ikke har god nok kvalitet er fjernet fra disk.","kom":"Kardemommesnurr som var overstekt"},{"id":"R3","sp":"Skjærefjøler er rene.","kom":""},{"id":"DD6","sp":"«Halvmuren» foran kaffestasjonen er ryddet og tom.","kom":"Skitten benk, men ryddig og pen"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler noen datoer i april"},{"id":"RV7","sp":"Behov for vedlikehold er meldt til regionleder.","kom":"En list må limes og benkeplaten må byttes ved vasken"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Mangler knotter til å feste filter på fryseskap. Gå ikke ann å åpne luken på kjøkkenskap for å gjøre vedlikehold"}],"month":"2026-04"},{"utsalg":"Herbarium","dato":"29.06.2026","gjennomforer":"Henrik Polden","planlagt":"Uanmeldt","score":100,"status":"Grønt","avvikCount":0,"avvik":[],"month":"2026-06"}];
+let entries = [{"utsalg":"Tasta","dato":"19.06.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":97.11538461538461,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I8","sp":"Bordlamper/telys er tent.","kom":""},{"id":"ADM1","sp":"Kasseoppgjør.","kom":""},{"id":"ADM3","sp":"Bestillingsrutinene følges slik at varebeholdningen til enhver tid er tilstrekkelig.","kom":""}],"month":"2026-06"},{"utsalg":"Hinna","dato":"19.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":89.42307692307693,"status":"Grønt","avvikCount":7,"avvik":[{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":""},{"id":"I7","sp":"Blomstene/potteplantene på gulvet er velstelt.","kom":""},{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":""},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":""},{"id":"DD5","sp":"Drikkevarer står fint fremstilt i displaykjøleren.","kom":""},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":""},{"id":"RV3","sp":"De ansatte vet hvor de finner HMS opplæringen og opplæring er gitt alle ansatte.","kom":""}],"month":"2026-06"},{"utsalg":"Eiganes","dato":"18.06.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":93.85964912280701,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":""},{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":""},{"id":"T8","sp":"Søppelbøtten er representabel.","kom":""}],"month":"2026-06"},{"utsalg":"Øst","dato":"17.06.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":99.21875,"status":"Grønt","avvikCount":1,"avvik":[{"id":"D8","sp":"Det er satt opp varer på glassdisk etter standard.","kom":""}],"month":"2026-06"},{"utsalg":"Maxi","dato":"11.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":89.42307692307693,"status":"Grønt","avvikCount":5,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Det er en del støv på skilt/romdelere som skiller gang og sittegrupper"},{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":""},{"id":"R2","sp":"Kniver er rene (både de som er i bruk og de som er i skuffer).","kom":"Bør vaskes etter bruk om det er tid"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Manglet for lørdag 6.juni"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Filter må støvsuges på kjøleskap"}],"month":"2026-06"},{"utsalg":"Drive Thru","dato":"12.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":93.69369369369369,"status":"Grønt","avvikCount":5,"avvik":[{"id":"U3","sp":"Vinduene ute er rene.","kom":"Fuglebæsj på vindu, bør vaskes"},{"id":"U4","sp":"Uteblomsterne er velstelt.","kom":"Bør oppgradere blomster og pusse benker"},{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":""},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Må fikse noen pærer/spotter"},{"id":"R6","sp":"Sprayflasker/såper er plassert på riktig sted.","kom":""}],"month":"2026-06"},{"utsalg":"Jærhagen","dato":"12.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":96.26168224299066,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Ganske store og tydelige kladdemerker på vindu rekkverk ved sitteplassene"},{"id":"R6","sp":"Sprayflasker/såper er plassert på riktig sted.","kom":"Finne en fast plass til slik at gjesten ikke ser de"}],"month":"2026-06"},{"utsalg":"Kvadrat Nord","dato":"12.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":85.98130841121495,"status":"Grønt","avvikCount":5,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":"Minne på å koste gulvet etter bygging av disk"},{"id":"D1","sp":"Disken bugner / det er godt varetrykk (også utpå dagen).","kom":"Mer muffins i disk"},{"id":"D5","sp":"Glasset i disken er ren (både utside og innside).","kom":"Glassdisken bør vaskes som en del av åpningsrutinen på grunn av støv fra senteret"},{"id":"R6","sp":"Sprayflasker/såper er plassert på riktig sted.","kom":"Finne et sted å oppbevare sprayflasker i skap/under disk som ikke er synlig for gjester"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Bakrommet er rotete på grunn av mangle på hyller/oppbevaring"}],"month":"2026-06"},{"utsalg":"Sandnes Langgata","dato":"04.06.2026","gjennomforer":"Fride","planlagt":"Uanmeldt","score":90.65420560747664,"status":"Grønt","avvikCount":6,"avvik":[{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Sjekker spotten om den virker"},{"id":"D5","sp":"Glasset i disken er ren (både utside og innside).","kom":"Disken bør vaskes oftere foran kasse og kaffeutlevering"},{"id":"R2","sp":"Kniver er rene (både de som er i bruk og de som er i skuffer).","kom":"Vask av kniv, har vært rush og mye gjester"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Manglet to datoer i mai"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Ikke støvsugd"},{"id":"KK9","sp":"Musikken er på behagelig nivå og riktig spilleliste spilles av.","kom":"Har ikke virket skikkelig noen gang"}],"month":"2026-06"},{"utsalg":"Holmenkollen","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":77.77777777777779,"status":"Gult","avvikCount":14,"avvik":[{"id":"U3","sp":"Vinduene ute er rene.","kom":"Vinduene fremstår som rene ved inngangspartiet. Men noe smuss over uteservering. Trafikkfilm og pollen er en utfordring"},{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":"Mulig feil bruk av kjemikale på bordvask"},{"id":"I8","sp":"Bordlamper/telys er tent.","kom":"Ikke tent"},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler en pære"},{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":"Følge opp stengevakten på rutine, vurder å ha dette som et eget punkt og ikke sammen med alle bord og stoler"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Noen fettmerker og berøringsflekker"},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Stort sett bra, men mangler bunnplate på skap under toastjern"},{"id":"DD4","sp":"Display-frys er ren og fylt opp.","kom":"Feil prisskilt"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Bestille mer"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Det bør jobbes med å holde gulv og hjørner fri fro rot. Spesielt der det er synlig for gjesten"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Rutinelistene blir ført på med tusj på laminert ark og visket bort hver uke/måned"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Noe mangler på temperaturer de siste dagene"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Det mangler nøkler for å komme til filter i kjøleskap/fryseskap. Dette må ordnes slik at de kan vedlikeholdes og øke levetiden på kjøleskap"},{"id":"KK1","sp":"Uniformen er brukt riktig (skjorte + forstykke, mørke bukser) tette sko.","kom":"Mangler forstykke og dette bør strammes opp. Det er vanskelig å ha forstykke og jobbe med ovn og det er ubehagelige forstykker."}],"month":"2026-05"},{"utsalg":"Eiganes","dato":"28.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":100,"status":"Grønt","avvikCount":0,"avvik":[],"month":"2026-05"},{"utsalg":"Østbanehallen","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":88.88888888888889,"status":"Grønt","avvikCount":8,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Noe støv på dispensere og punkter som ikke er benk eller overflater. Bak tv/kaffemeny"},{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":"Rene bord, men en del benker og stoler med smuler/smuss"},{"id":"D4","sp":"Prisskilt er plassert riktig (ved produktet).","kom":"Noe feil på prisskilt"},{"id":"DD2","sp":"Presentasjon av delivarer er delikat og ryddig.","kom":"Tom delivarehylle pga tyveri, vurdere å ta bort/blende"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Mulig hyllesystem? Mye som står på gulv"},{"id":"B3","sp":"Personaltoalett (der aktuelt) og garderobe er ryddig og rene.","kom":"Toalettsete er løst og mangler muttere"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler noen registreringer på helligdager når butikkleder har fri"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Mangler en del knotter og den ene døren er låst. Må få låst den opp"}],"month":"2026-05"},{"utsalg":"Valkyrien","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":99.06542056074767,"status":"Grønt","avvikCount":1,"avvik":[{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Har ikke fått opplæring i vedlikehold. Fryseskapet er låst og bør låses opp slik at en får tilgang"}],"month":"2026-05"},{"utsalg":"Skøyen","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":95.38461538461539,"status":"Grønt","avvikCount":4,"avvik":[{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler en pære over vannstasjonen"},{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":"Skitne barnestoler satt på plass"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Vindu-gelender i trapp har mange kladdemerker"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Filter over oppvaskaskin var ikke rengjort"}],"month":"2026-05"},{"utsalg":"Egersund","dato":"28.05.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":96.92307692307692,"status":"Grønt","avvikCount":4,"avvik":[{"id":"U5","sp":"Bordene er ryddet og tørket av.","kom":"Vaskes av hver morgen"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Mangler ukesrutiner tilbake i tid. Ikke gjennomgått i opplæring?"},{"id":"KK3","sp":"Det er behagelig temperatur i utsalget og de ansatte opplært i ventilasjonsanlegget.","kom":"Varmt i utsalget, skru av ovner. Kontakt huseier - temperaturstyring"},{"id":"ADM1","sp":"Kasseoppgjør.","kom":"Differanse i kassen som vi ikke vet hvor stammer fra"}],"month":"2026-05"},{"utsalg":"Jar","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":76.92307692307693,"status":"Gult","avvikCount":16,"avvik":[{"id":"U1","sp":"Det er rent og fritt for søppel utenfor (snus/sneiper tatt bort).","kom":"En del sneiper/snus på uteservering"},{"id":"U2","sp":"Utemøbler står pent oppstilt.","kom":"Litt rotete og synlig søppel som kunne vært plukket"},{"id":"U3","sp":"Vinduene ute er rene.","kom":"Sjekke rutiner for vindusvask"},{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"En del støv i vinduskarmer"},{"id":"I8","sp":"Bordlamper/telys er tent.","kom":"De fleste av lysene var slukket"},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler en pære"},{"id":"T2","sp":"Døren er ren og i orden.","kom":"Dør kan med fordel vaskes på innsiden"},{"id":"D4","sp":"Prisskilt er plassert riktig (ved produktet).","kom":"Nytt prisskilt"},{"id":"DD1","sp":"Delivarehyllen og delivarer er tørket av for støv.","kom":"Mye støv rundt og under delivarer"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler surdeigsknekkebrød"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Rom for forbedring. Litt rotete og esker direkte på gulvet"},{"id":"RV1","sp":"Datomerking er gjort ihht rutiner.","kom":"Utløpsdato ok. Bør merkes med åpnet dato også"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Ingen ukesrutiner utfylt i uke 22, uke 21 ok"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler på de 3 siste"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Filter på fryseskap må rengjøres"},{"id":"KK12","sp":"Markedsføringsmateriell er oppdatert og satt opp i henhold til standard.","kom":"Prisskilt er ulik standard"}],"month":"2026-05"},{"utsalg":"Bekkestua","dato":"28.05.2026","gjennomforer":"Frode, Milja, Ida","planlagt":"Planlagt","score":86.32478632478633,"status":"Grønt","avvikCount":8,"avvik":[{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Bytte lyspære"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Vaske utgangsdør og skillevegg ved utgangen"},{"id":"K7","sp":"Kaffemaskinen er rengjort i henhold til rutiner - inkl. steamerarm og filter.","kom":"Steamerarm har tørket melk"},{"id":"DD5","sp":"Drikkevarer står fint fremstilt i displaykjøleren.","kom":"Mangler prisskilt kjøl"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler surdeigsknekkebrød"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Ingen ukesrutiner er påbegynt i uke 22"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler kontroll to dager i mai ifølge skjema"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Støvsuge filter på isbitmaskinen"}],"month":"2026-05"},{"utsalg":"Liertoppen","dato":"28.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":88.78504672897196,"status":"Grønt","avvikCount":4,"avvik":[{"id":"I3","sp":"Bordene er ryddet, tørket av og rene, og de ryddes fortløpende.","kom":"Skiltene på bordene er veldig skitne"},{"id":"D4","sp":"Prisskilt er plassert riktig (ved produktet).","kom":"Prisskilt er ikke i henhold til standard"},{"id":"R6","sp":"Sprayflasker/såper er plassert på riktig sted.","kom":"Finne en plass å oppbevare disse"},{"id":"RV1","sp":"Datomerking er gjort ihht rutiner.","kom":"Det bør være åpningsdato og best før dato på ost og skinke. Pluss øvreige varer som åpnes"}],"month":"2026-05"},{"utsalg":"Jessheim","dato":"29.05.2026","gjennomforer":"Milja","planlagt":"Planlagt","score":92.5233644859813,"status":"Grønt","avvikCount":4,"avvik":[{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Vask og rydd skuffer"},{"id":"B2","sp":"Kjøl/frys er ryddig og rene.","kom":"Trenger mer plass til melk. Ønsker seg et lite kjøleskap til melk. Har ikke plass til noe ekstra hvis bestillinger"},{"id":"RV1","sp":"Datomerking er gjort ihht rutiner.","kom":"Trenger datomerkingmaskin eller klistremerker med datomerking"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Må få rutine på å fylle ut. Mangler fullstendig utfylling på flere skjemaer."}],"month":"2026-05"},{"utsalg":"Øst","dato":"20.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":98.44961240310077,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Tørke støv over luftkanaler."},{"id":"T9","sp":"Stellebord er pent og rent.","kom":"Vaskes og tørkes støv av"}],"month":"2026-05"},{"utsalg":"Herbarium","dato":"20.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":92.5233644859813,"status":"Grønt","avvikCount":4,"avvik":[{"id":"I7","sp":"Blomstene/potteplantene på gulvet er velstelt.","kom":"Enormt mye støv på blomstene på gulv"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Se over glassvegg mot Mester Grønn"},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Nøyere kosting i hyllene"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler flere dager i mars/april, noe bedre i mai. Ofte de større stillingene som tar temperaturen."}],"month":"2026-05"},{"utsalg":"Arneageren","dato":"20.05.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":82.3076923076923,"status":"Grønt","avvikCount":11,"avvik":[{"id":"A3","sp":"De ansatte på jobb har fått tilstrekkelig opplæring.","kom":""},{"id":"U1","sp":"Det er rent og fritt for søppel utenfor (snus/sneiper tatt bort).","kom":"Rutine på åpning sjekk av uteplass"},{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":""},{"id":"T3","sp":"Gulv/vegger/tak/annet utstyr er rent og i orden.","kom":"Maling på toalettet"},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Vegger på skap/hyller har falt ut. Må settes opp igjen"},{"id":"DD1","sp":"Delivarehyllen og delivarer er tørket av for støv.","kom":"Støv på delihylle"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Finner ikke rutinelister tilbake i tid"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":""},{"id":"RV7","sp":"Behov for vedlikehold er meldt til regionleder.","kom":"Maling på toalett, fikse vegg bak hyller under disk"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Filter isbitmaskin, kjølebenker bak disk"},{"id":"ADM3","sp":"Bestillingsrutinene følges slik at varebeholdningen til enhver tid er tilstrekkelig.","kom":"Lite melk over lenger tid, store feil bestillinger på soyamelk"}],"month":"2026-05"},{"utsalg":"Hinna","dato":"20.05.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":92.5233644859813,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":"Vask og oppfølging av stengevakten"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler 3 dager i april."}],"month":"2026-05"},{"utsalg":"Madla","dato":"20.04.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":94.39252336448598,"status":"Grønt","avvikCount":6,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Støv på lamper, disk"},{"id":"I8","sp":"Bordlamper/telys er tent.","kom":""},{"id":"I13","sp":"Romdeler er rene og tørket for støv.","kom":""},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler 4 oppe, meldt fra på forhånd"},{"id":"D8","sp":"Det er satt opp varer på glassdisk etter standard.","kom":""},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Støvsuge filter til kjøledisker. På hylle på bakrom. Veldig utilgjengelig"}],"month":"2026-04"},{"utsalg":"Tasta","dato":"06.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":91.58878504672897,"status":"Grønt","avvikCount":5,"avvik":[{"id":"D7","sp":"Det er satt ut smaksprøve i henhold til standard.","kom":"Fjerne klistrelapper"},{"id":"B1","sp":"Bakrommet er ryddig og rent.","kom":"Holde bakdisk ryddig"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler 5 dager i april. Høye tempereturer i kjøledisk som ikke er meldt fra"},{"id":"RV7","sp":"Behov for vedlikehold er meldt til regionleder.","kom":"Høy temperatur i kjøledisk, sjekk filter"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Sjekk filter, dårlig tilgjengelighet"}],"month":"2026-05"},{"utsalg":"Kvadrat Sør","dato":"06.05.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":97.19626168224299,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I2","sp":"Det er ikke støv i utsalget.","kom":"Litt støv rundt omkring. Utilgjengelige plasser. Mangler støvkost og stige"},{"id":"I10","sp":"Søppeldunkene fremstår pene og rene.","kom":"Lokket op gjestesøppelet er skittent"},{"id":"RV7","sp":"Behov for vedlikehold er meldt til regionleder.","kom":"sendt på mail til vaktmester"}],"month":"2026-05"},{"utsalg":"Kilden","dato":"12.05.2026","gjennomforer":"Henrik","planlagt":"Planlagt","score":99.07407407407408,"status":"Grønt","avvikCount":1,"avvik":[{"id":"DD4","sp":"Display-frys er ren og fylt opp.","kom":"Må fylles opp med noe. Lite salg av makroner, kutte ut?"}],"month":"2026-05"},{"utsalg":"Kilden","dato":"15.06.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":93.51851851851852,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":""},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Vaske under kjøledisker"},{"id":"B2","sp":"Kjøl/frys er ryddig og rene.","kom":"Overfylt på øverste hylle slik at det ødelegger for kjøing"}],"month":"2026-06"},{"utsalg":"Valkyrien","dato":"23.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":96.26168224299066,"status":"Grønt","avvikCount":2,"avvik":[{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler poser med cookies og pumpkinsnack, og Nordre Nes 0,75L. Kun 1 Himmelstund, fyll på."},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Har ikke støvsuger"}],"month":"2026-06"},{"utsalg":"Jar","dato":"23.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":97.6923076923077,"status":"Grønt","avvikCount":3,"avvik":[{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Mangler lys i taklampe midt i rommet"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Mangler nøkkel til å åpne filter på skap"},{"id":"KK3","sp":"Det er behagelig temperatur i utsalget og de ansatte opplært i ventilasjonsanlegget.","kom":"AC ute av drift. Vurdere vifte i kafe. Kjent avvik fra tidligere"}],"month":"2026-06"},{"utsalg":"Bekkestua","dato":"23.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":94.87179487179486,"status":"Grønt","avvikCount":4,"avvik":[{"id":"D4","sp":"Prisskilt er plassert riktig (ved produktet).","kom":"Feil skilt på cola zero"},{"id":"DD4","sp":"Display-frys er ren og fylt opp.","kom":"Bør tørkes av og fylles opp"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler pumpkinsnack og pose med cookies. Bestilt men ikke fått levert. Forventet levering tirsdag"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Ikke startet på denne ukens ukesrutiner"}],"month":"2026-06"},{"utsalg":"Bryne","dato":"24.06.2026","gjennomforer":"Frode","planlagt":"Uanmeldt","score":98.13084112149532,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I13","sp":"Romdeler er rene og tørket for støv.","kom":"En del støv som var samlet opp på disse, også over menyskilt"},{"id":"I16","sp":"Vinduene er rene på innsiden.","kom":"Noen flekker og fingermerker på dør og berøringspunkter"}],"month":"2026-06"},{"utsalg":"Østbanehallen","dato":"25.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":96.26168224299066,"status":"Grønt","avvikCount":2,"avvik":[{"id":"I15","sp":"Barnestoler er rene og tørket av, og plassert på riktig plass.","kom":"To barnestoler, begge trengs en vask"},{"id":"D5","sp":"Glasset i disken er ren (både utside og innside).","kom":"Synlig støvete disk på både kiosk og cafe"}],"month":"2026-06"},{"utsalg":"Madla","dato":"25.06.2026","gjennomforer":"Henrik","planlagt":"Uanmeldt","score":85.04672897196261,"status":"Grønt","avvikCount":10,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":"Rutiner med kosting/feiing, mye smuler på gulv, hyller, benk, stoler og bord"},{"id":"I3","sp":"Bordene er ryddet, tørket av og rene, og de ryddes fortløpende.","kom":""},{"id":"I4","sp":"Stolene/benkene tørket over og rene.","kom":""},{"id":"I10","sp":"Søppeldunkene fremstår pene og rene.","kom":"Mye støv og gammelt søl"},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Lys  i cafe var ikke skrudd på. 1 lampe uten lys"},{"id":"D5","sp":"Glasset i disken er ren (både utside og innside).","kom":"Gammel moro på innsiden og oppå"},{"id":"D6","sp":"Benkplaten bak disken er ren og ryddig.","kom":"Smulete og skittent på bakdisk"},{"id":"R1","sp":"Det er rent oppi skuffene og skap.","kom":"Mye gamle smuler i hyller langs hele disken"},{"id":"R2","sp":"Kniver er rene (både de som er i bruk og de som er i skuffer).","kom":""},{"id":"DD2","sp":"Presentasjon av delivarer er delikat og ryddig.","kom":"Tomt i delihylle"}],"month":"2026-06"},{"utsalg":"Holmenkollen","dato":"26.06.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":93.45794392523365,"status":"Grønt","avvikCount":5,"avvik":[{"id":"I8","sp":"Bordlamper/telys er tent.","kom":"Telys ikke tent, rydde vekk for sommeren?"},{"id":"I14","sp":"Det er lys i alle taklamper.","kom":"Lyspære virker ikke på taklampe ytterst ved vinduet. Og mangler i en av lampene i taket nærmest kaffemaskinen"},{"id":"DD8","sp":"Det er riktig sortement i delivarer.","kom":"Mangler poser med cookies og pumpkinsnack. Er bestilt inn til neste uke"},{"id":"RV2","sp":"Rutinelister er utfylt, og tatt vare på 12 uker tilbake i tid.","kom":"Ikke begynt med rutinelister. Har plan om å begynne med dette 1.juli"},{"id":"ADM1","sp":"Kasseoppgjør.","kom":"Mangler dagsoppgjør skjema. Ikke fylt ut kontantskjema for nattsafe"}],"month":"2026-06"},{"utsalg":"Bryne M44","dato":"20.04.2026","gjennomforer":"Frode","planlagt":"Planlagt","score":85.04672897196261,"status":"Grønt","avvikCount":8,"avvik":[{"id":"I1","sp":"Gulvet fremstår rent og fritt for smuler (bak disk/i sitteområde).","kom":""},{"id":"I11","sp":"Det er pent og ryddig ved vannstasjonen.","kom":"Mye flekker og ikke vasket"},{"id":"D3","sp":"Produkter som ikke har god nok kvalitet er fjernet fra disk.","kom":"Kardemommesnurr som var overstekt"},{"id":"R3","sp":"Skjærefjøler er rene.","kom":""},{"id":"DD6","sp":"«Halvmuren» foran kaffestasjonen er ryddet og tom.","kom":"Skitten benk, men ryddig og pen"},{"id":"RV4","sp":"Temperatur på kjøl er tatt daglig ihht rutiner.","kom":"Mangler noen datoer i april"},{"id":"RV7","sp":"Behov for vedlikehold er meldt til regionleder.","kom":"En list må limes og benkeplaten må byttes ved vasken"},{"id":"RV8","sp":"Filter på kjøledisk og ventilasjon er støvsugd.","kom":"Mangler knotter til å feste filter på fryseskap. Gå ikke ann å åpne luken på kjøkkenskap for å gjøre vedlikehold"}],"month":"2026-04"},{"utsalg":"Herbarium","dato":"29.06.2026","gjennomforer":"Henrik Polden","planlagt":"Uanmeldt","score":100,"status":"Grønt","avvikCount":0,"avvik":[],"month":"2026-06"},{"utsalg":"Liertoppen","dato":"10.08.2026","gjennomforer":"Milja","planlagt":"Uanmeldt","score":99.06542056074767,"status":"Grønt","avvikCount":1,"avvik":[{"id":"RV9","sp":"Førstehjelpsskriner er tilgjengelig og med riktig innhold.","kom":"Hadde tidligere, sjekker opp om det har blitt lagt på lager."}],"month":"2026-08"}];
 let pending = null;
 let activeFilter = "all";
 
